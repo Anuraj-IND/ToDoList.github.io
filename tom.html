@@ -23,7 +23,7 @@
                   More
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="tom.html">Tomorrow's List</a></li>
+                  <li><a class="dropdown-item" href="html2.html">Yesterday's List</a></li>
                 </ul>
               </li>
             </ul>
@@ -36,7 +36,7 @@
       </nav>
       <!--NAV BAND HO GAYA UPAR AB NEECHE AAO!!!!!!1-->
     <div class="container m-4">  
-    <h1 class="text-center">Yesterday's To-Do List</h1>
+    <h1 class="text-center">Tomorrow's To-Do List</h1>
         <div class="form-group">
           <label for="title" class="form-label">Title</label>
           <input type="text" class="form-control" id="title">
@@ -85,30 +85,30 @@
         function getanupdate(){
           tit=document.getElementById('title').value;
                 desc=document.getElementById('description').value;
-                if (localStorage.getItem('con')==null){
+                if (localStorage.getItem('tom')==null){
                     itemJsonArry=[]
                     itemJsonArry.push([tit,desc])
-                    localStorage.setItem('con',JSON.stringify(itemJsonArry))
+                    localStorage.setItem('tom',JSON.stringify(itemJsonArry))
                     console.log("Updating List....");
                 }
                 else{
-                  itemJsonArryStr = localStorage.getItem('con')
+                  itemJsonArryStr = localStorage.getItem('tom')
                   itemJsonArry=JSON.parse(itemJsonArryStr)
                   itemJsonArry.push([tit,desc])
-                  localStorage.setItem('con',JSON.stringify(itemJsonArry))
+                  localStorage.setItem('tom',JSON.stringify(itemJsonArry))
                   console.log("Updating List....");
                   
                 }
                 update();
         }
         function update(){
-                if (localStorage.getItem('con')==null){
+                if (localStorage.getItem('tom')==null){
                     itemJsonArry=[];
-                    localStorage.setItem('con',JSON.stringify(itemJsonArry))
+                    localStorage.setItem('tom',JSON.stringify(itemJsonArry))
                     console.log("Updating List....");
                 }
                 else{
-                  itemJsonArryStr = localStorage.getItem('con')
+                  itemJsonArryStr = localStorage.getItem('tom')
                   itemJsonArry=JSON.parse(itemJsonArryStr);            
                 }
                 //now populate the table
@@ -134,17 +134,17 @@
         // deleted=document.getElementById("deleted");  
         function deleted(itemindex){
            console.log("delete",itemindex)
-           itemJsonArryStr = localStorage.getItem('con')
+           itemJsonArryStr = localStorage.getItem('tom')
            itemJsonArry=JSON.parse(itemJsonArryStr)
            //deleted item element index from array
            itemJsonArry.splice(itemindex,1);
-           localStorage.setItem('con',JSON.stringify(itemJsonArry))
+           localStorage.setItem('tom',JSON.stringify(itemJsonArry))
            update();
         } 
         //deleted.addEventListener("click",deletedd);
         function clearr(){
           console.log("clearing the list....")
-          localStorage.removeItem('con');
+          localStorage.removeItem('tom');
           update()
         }
         clr.addEventListener("click",clearr);
